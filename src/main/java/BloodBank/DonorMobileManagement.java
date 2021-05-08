@@ -10,25 +10,29 @@ public class DonorMobileManagement {
 	 * @return
 	 */
 	public static boolean addMobileNumber(DonorCredentials mobileNum) 
-	{   boolean validity=false;
+	{   boolean valid=false;
 	{   
 		
 		String num=String.valueOf(mobileNum.mobileNo);
-		if(num.length()==10 && (num.startsWith("7")|| num.startsWith("8") || num.startsWith("9")))
+		if(num.length()==10)
+		{
+			if(num.startsWith("7")|| num.startsWith("8") || num.startsWith("9"))
 				
 		{   list.add(mobileNum);
-			System.out.println("Valid credentials");
-			validity=true;
+			valid=true;
 			System.out.println(mobileNum.mobileNo);
+			System.out.println("Valid credentials");
+			
+		}
+			else
+				System.out.println("Invalid Credentials");
 			
 		}
 		else 
-		{
 			System.out.println("InValid credentials");
-		}
 			    	
 	}
-	return validity;
+	return valid;
 }
 	public static void displayCustomerList()
 	{   
