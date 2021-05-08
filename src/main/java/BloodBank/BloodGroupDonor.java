@@ -1,13 +1,19 @@
 package BloodBank;
 import java.util.*;
 public class BloodGroupDonor {
-static HashMap<String, ArrayList<String>> donors=new HashMap<String,ArrayList<String>>();
-static ArrayList<String> donorListO = new ArrayList<String>();
-static ArrayList<String> donorListA = new ArrayList<String>();
-static ArrayList<String> donorListA1B = new ArrayList<String>();
+static HashMap<String,ArrayList<Long>> donors=new HashMap<String,ArrayList<Long>>();
+static HashMap<Long,String> donorDetails=new HashMap<Long,String>();
+static ArrayList<Long>donorListO = new ArrayList<Long>();
+static ArrayList<Long>donorListA = new ArrayList<Long>();
+static ArrayList<Long>donorListA1B = new ArrayList<Long>();
 static {
-donors.put("O+" ,donorListO );
-donors.put("A+" ,donorListA );
+donorDetails.put(7708707278L,"lingtan");
+donorDetails.put(9080051127L,"lavanya");
+donorDetails.put(7598002794L,"kirthika");
+donorDetails.put(7598002796L,"surya");
+
+donors.put("O+" ,donorListO);
+donors.put("A+" ,donorListA);
 donors.put("A1B+", donorListA1B);
 
 }
@@ -17,21 +23,22 @@ donors.put("A1B+", donorListA1B);
 	 * @param bloodType
 	 * @return
 	 */
-	public static boolean addDonars(String donor, String bloodType) { 
+	public static boolean addDonars(String bloodType,Long donorId) { 
 		boolean isAdded = false;
-		ArrayList<String> donarNames = donors.get(bloodType);
-		if(donarNames.contains(donor)) {
-			System.out.println(donor+" is already present");
+		ArrayList<Long> donarNames = donors.get(bloodType);
+		if(donarNames.contains(donorId)) {
+			System.out.println(donorId+" is already present");
 		}
 		else {
-			donarNames.add(donor);
+			donarNames.add(donorId);
 			isAdded=true;
 			System.out.println(donors);
+			displayDetails(donorId);
 		}
 			
 		return isAdded;
 	}
-	public static ArrayList<String> displayBloodGroupName(String bloodType){
+	public static ArrayList<Long> displayBloodGroupName(String bloodType){
 		return donors.get(bloodType);
 	}
 	/**
@@ -41,8 +48,13 @@ donors.put("A1B+", donorListA1B);
 	public static void displayNames(String bloodType) 
 	{
 		
-		ArrayList<String> names = BloodGroupDonor.displayBloodGroupName(bloodType);
+		ArrayList<Long> names = BloodGroupDonor.displayBloodGroupName(bloodType);
 		System.out.println("The donars with "+bloodType+" "+names);
+	}
+	public static void displayDetails(Long Id)
+	{
+		String values=donorDetails.get(Id);
+		System.out.println(Id+" belongs to "+values);
 	}
 	
 }
