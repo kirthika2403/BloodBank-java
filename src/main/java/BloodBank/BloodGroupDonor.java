@@ -33,28 +33,26 @@ donors.put("A1B+", donorListA1B);
 			donarNames.add(donorId);
 			isAdded=true;
 			System.out.println(donors);
-			displayDetails(donorId);
+			
 		}
 			
 		return isAdded;
 	}
-	public static ArrayList<Long> displayBloodGroupName(String bloodType){
-		return donors.get(bloodType);
-	}
+	
 	/**
 	 * user defined function to display donor name of particular blood group
 	 * @param bloodType
 	 */
 	public static void displayNames(String bloodType) 
 	{
-		
-		ArrayList<Long> names = BloodGroupDonor.displayBloodGroupName(bloodType);
-		System.out.println("The donars with "+bloodType+" "+names);
-	}
-	public static void displayDetails(Long Id)
-	{
-		String values=donorDetails.get(Id);
-		System.out.println(Id+" belongs to "+values);
-	}
+		ArrayList<Long> mobileNum=donors.get(bloodType);
+		System.out.println("donor available in "+bloodType+" blood types is ");
+		for(Long list:mobileNum)
+		{
+		  String names=donorDetails.get(list);
+		  System.out.println(names);
+		}
+     }
+	
 	
 }
